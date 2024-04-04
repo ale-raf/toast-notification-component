@@ -1,8 +1,15 @@
 /* eslint-disable react/prop-types */
 
-const Notification = ({ icon, text, bgColor, activeClassName, onClick }) => {
+const Notification = ({
+  icon,
+  text,
+  bgColor,
+  activeClassName,
+  positionClassName,
+  onClick,
+}) => {
   return (
-    <div className={"notification " + activeClassName}>
+    <div className={`notification ${activeClassName} ${positionClassName}`}>
       <i>{icon}</i>
       <p>{text}</p>
       <button className="notification-btn" onClick={onClick}>

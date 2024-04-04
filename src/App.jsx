@@ -40,6 +40,7 @@ function App() {
     position: "absolute",
     top: "5px",
     right: "15px",
+    positionClassName: "right",
   });
 
   const handleChange = (e) => {
@@ -49,6 +50,7 @@ function App() {
           position: "absolute",
           left: "15px",
           top: "5px",
+          positionClassName: "left",
         });
         break;
       case "bottom-left":
@@ -56,6 +58,7 @@ function App() {
           position: "absolute",
           left: "15px",
           bottom: "5px",
+          positionClassName: "left",
         });
         break;
       case "bottom-right":
@@ -63,6 +66,7 @@ function App() {
           position: "absolute",
           right: "15px",
           bottom: "5px",
+          positionClassName: "right",
         });
         break;
       default:
@@ -70,6 +74,7 @@ function App() {
           position: "absolute",
           right: "15px",
           top: "5px",
+          positionClassName: "right",
         });
         break;
     }
@@ -109,6 +114,7 @@ function App() {
               text={toast.notifText}
               bgColor={toast.color}
               activeClassName={toast.active ? "notification-active" : null}
+              positionClassName={notificationsPosition.positionClassName}
               onClick={(e) => handleClick(e, index)}
             />
           ) : null

@@ -39,6 +39,12 @@ input {
   font-size: 1.15rem;
   font-weight: bold;
 }
+.notification.right {
+  animation: notification-top-right ease-in-out 0.5s;
+}
+.notification.left {
+  animation: notification-top-left ease-in-out 0.5s;
+}
 .notification i {
   font-style: inherit;
 }
@@ -69,4 +75,21 @@ input {
   font-size: 1.25rem;
   font-weight: bold;
   cursor: pointer;
+}
+
+@keyframes notification-top-right {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 5px;
+  }
+}
+@keyframes notification-top-left {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 5px;
+  }
 }
