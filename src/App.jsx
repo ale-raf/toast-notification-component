@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Button from "./Button";
 import Notification from "./Notification";
+import Form from "./Form";
 
 function App() {
   const toastsList = [
@@ -78,56 +79,19 @@ function App() {
     let newToasts = [...toasts];
     newToasts[index].active = e.target.className === "toast-btn" ? true : false;
     setToasts(newToasts);
-    setInterval(() => {}, 5);
+    // notifications loose active status after 5 seconds
     setTimeout(() => {
       newToasts = [...toasts];
       newToasts[index].active = false;
       setToasts(newToasts);
-    }, 5000);
+    }, 4000);
   };
 
   return (
     <div className="app">
       <h1>Toast Notification Component</h1>
-      <h2>Customize the position of the notifications :</h2>
-      <form action="#">
-        <label htmlFor="top-left">
-          <input
-            type="radio"
-            name="notificationsPosition"
-            id="top-left"
-            onChange={(e) => handleChange(e)}
-          />
-          Top Left
-        </label>
-        <label htmlFor="top-right">
-          <input
-            type="radio"
-            name="notificationsPosition"
-            id="top-right"
-            onChange={(e) => handleChange(e)}
-          />
-          Top Right
-        </label>
-        <label htmlFor="bottom-right">
-          <input
-            type="radio"
-            name="notificationsPosition"
-            id="bottom-right"
-            onChange={(e) => handleChange(e)}
-          />
-          Bottom Right
-        </label>
-        <label htmlFor="bottom-left">
-          <input
-            type="radio"
-            name="notificationsPosition"
-            id="bottom-left"
-            onChange={(e) => handleChange(e)}
-          />
-          Bottom Left
-        </label>
-      </form>
+      <h3>Customize the position of the notifications :</h3>
+      <Form onChange={(e) => handleChange(e)} />
       {toasts.map((toast, index) => (
         <Button
           key={toast.btnValue}
