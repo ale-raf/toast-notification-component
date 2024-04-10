@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 
-const Button = ({ value, bgColor, onClick }) => {
+export const Button = ({ value, bgColor, onClick }) => {
   return (
     <button
       className="toast-btn"
@@ -12,5 +12,3 @@ const Button = ({ value, bgColor, onClick }) => {
     </button>
   );
 };
-
-export default Button;

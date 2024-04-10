@@ -1,15 +1,13 @@
 /* eslint-disable react/prop-types */
-import Input from "./Input";
+import { Input } from "./Input";
 
-const Form = ({ onChange }) => {
+export const Form = () => {
   return (
     <form action="#">
-      <Input text="Top Left" id="top-left" onChange={onChange} />
-      <Input text="Top Right" id="top-right" onChange={onChange} />
-      <Input text="Bottom Right" id="bottom-right" onChange={onChange} />
-      <Input text="Bottom Left" id="bottom-left" onChange={onChange} />
+      <Input text="Top Left" id="top-left" />
+      <Input text="Top Right" id="top-right" />
+      <Input text="Bottom Right" id="bottom-right" />
+      <Input text="Bottom Left" id="bottom-left" />
     </form>
   );
 };
-
-export default Form;
