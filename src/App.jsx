@@ -11,42 +11,39 @@ export const App = () => {
   const { toastPosition } = useToastPosition();
 
   const getNotification = (event) => {
-    let notification = {};
+    const id = Date.now();
+    let notification = { id };
     switch (event.target.value) {
       case "Success":
         notification = {
+          ...notification,
           message: "Success toast notification",
-          active: false,
           color: "#22c55e",
           icon: "✅",
-          id: Date.now(),
         };
         break;
       case "Info":
         notification = {
+          ...notification,
           message: "Info toast notification",
-          active: false,
           color: "#3b82f6",
           icon: "ℹ️",
-          id: Date.now(),
         };
         break;
       case "Warning":
         notification = {
+          ...notification,
           message: "Warning toast notification",
-          active: false,
           color: "#f97316",
           icon: "⚠️",
-          id: Date.now(),
         };
         break;
       case "Error":
         notification = {
+          ...notification,
           message: "Error toast notification",
-          active: false,
           color: "#ef4444",
           icon: "❌",
-          id: Date.now(),
         };
         break;
     }
@@ -54,12 +51,11 @@ export const App = () => {
   };
 
   const handleClick = (e) => {
-    let myNotif = getNotification(e);
+    let notification = getNotification(e);
 
     // let myIndex = newToasts.indexOf(myNotif);
 
-    // newToasts[myIndex].active = true;
-    setToasts([...toasts, myNotif]);
+    setToasts([...toasts, notification]);
 
     // notifications loose active status after 4 seconds
     setTimeout(() => {
@@ -86,9 +82,9 @@ export const App = () => {
         />
       ))}
       <div style={toastPosition}>
-        {toasts.map((toast, index) => (
+        {toasts.map((toast) => (
           <Toast
-            key={index}
+            key={toast.id}
             icon={toast.icon}
             message={toast.message}
             bgColor={toast.color}
