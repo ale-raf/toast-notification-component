@@ -1,4 +1,4 @@
-import { useToastPosition } from "./hooks/useToastPosition";
+import { useToastPosition } from "../hooks/useToastPosition";
 
 /* eslint-disable react/prop-types */
 export const Input = ({ text, id }) => {

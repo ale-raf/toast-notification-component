@@ -1,22 +1,14 @@
 import { useState } from "react";
 import { buttons } from "./data/buttons";
-import { Button } from "./Button";
-import { Toast } from "./Toast";
-import { Form } from "./Form";
+import { Button } from "./components/Button";
+import { Toast } from "./components/Toast";
+import { Form } from "./components/Form";
 import { useToastPosition } from "./hooks/useToastPosition";
 
 export const App = () => {
   const [toasts, setToasts] = useState([]);
 
   const { toastPosition } = useToastPosition();
-
-  // const [notification, setNotification] = useState({
-  //   message: "",
-  //   icon: "",
-  //   color: "",
-  //   active: false,
-  //   id: null,
-  // });
 
   const getNotification = (event) => {
     let notification = {};
@@ -63,28 +55,20 @@ export const App = () => {
 
   const handleClick = (e) => {
     let myNotif = getNotification(e);
-    // let newNotif = {
-    //   ...notification,
-    //   message: myNotif.message,
-    //   icon: myNotif.icon,
-    //   color: myNotif.color,
-    //   active: true,
-    // };
-    // setNotification(myNotif);
+
     const newToasts = [...toasts, myNotif];
+
     let myIndex = newToasts.indexOf(myNotif);
+
     newToasts[myIndex].active = true;
+
     setToasts(newToasts);
 
     // notifications loose active status after 4 seconds
-    setTimeout(() => {
-      //   newNotif = { ...notification, active: false };
-      //   setNotification(newNotif);
-      // let filteredToasts = newToasts.filter((toast) => toast.active === false);
-      // newToasts = [...toasts, myNotif];
-      newToasts[myIndex].active = false;
-      setToasts(newToasts);
-    }, 4000);
+    // setTimeout(() => {
+    //   newToasts[myIndex].active = false;
+    //   setToasts(newToasts);
+    // }, 4000);
   };
 
   const closeToast = (index) => {
