@@ -56,25 +56,20 @@ export const App = () => {
   const handleClick = (e) => {
     let myNotif = getNotification(e);
 
-    const newToasts = [...toasts, myNotif];
+    // let myIndex = newToasts.indexOf(myNotif);
 
-    let myIndex = newToasts.indexOf(myNotif);
-
-    newToasts[myIndex].active = true;
-
-    setToasts(newToasts);
+    // newToasts[myIndex].active = true;
+    setToasts([...toasts, myNotif]);
 
     // notifications loose active status after 4 seconds
-    // setTimeout(() => {
-    //   newToasts[myIndex].active = false;
-    //   setToasts(newToasts);
-    // }, 4000);
+    setTimeout(() => {
+      // newToasts[myIndex].active = false;
+      // setToasts(newToasts);
+    }, 1000);
   };
 
-  const closeToast = (index) => {
-    const myToasts = [...toasts];
-    myToasts[index].active = false;
-    setToasts(myToasts);
+  const closeToast = (toast) => {
+    setToasts(toasts.filter((t) => t.id !== toast.id));
   };
 
   return (
@@ -91,19 +86,16 @@ export const App = () => {
         />
       ))}
       <div style={toastPosition}>
-        {toasts.map(
-          (toast, index) =>
-            toast.active && (
-              <Toast
-                key={index}
-                icon={toast.icon}
-                message={toast.message}
-                bgColor={toast.color}
-                activeClassName={toast.active ? "notification-active" : ""}
-                onClick={() => closeToast(index)}
-              />
-            )
-        )}
+        {toasts.map((toast, index) => (
+          <Toast
+            key={index}
+            icon={toast.icon}
+            message={toast.message}
+            bgColor={toast.color}
+            activeClassName={"notification-active"}
+            onClick={() => closeToast(toast)}
+          />
+        ))}
       </div>
     </div>
   );
