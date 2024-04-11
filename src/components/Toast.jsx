@@ -1,12 +1,12 @@
 import { useToastPosition } from "../hooks/useToastPosition";
 
 /* eslint-disable react/prop-types */
-export const Toast = ({ icon, message, bgColor, activeClassName, onClick }) => {
+export const Toast = ({ icon, message, bgColor, onClick }) => {
   const { toastPosition } = useToastPosition();
 
   return (
     <div
-      className={`notification ${activeClassName} ${toastPosition.className}`}
+      className={`notification notification-active ${toastPosition.className}`}
       role="alert"
     >
       <i>{icon}</i>
